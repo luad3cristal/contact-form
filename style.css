@@ -24,7 +24,7 @@ body {
 }
 
 input {
-  padding: 8px 10px;
+  padding: 10px;
   font-family: "Karla", sans-serif;
   font-size: 16px;
   border: 1px solid var(--medium-grey);
@@ -32,7 +32,15 @@ input {
 }
 input:hover, input:focus {
   border: 1px solid var(--darker-green);
-  outline: 1px solid var(--darker-green);
+  outline: 0px;
+}
+
+input[type=radio] {
+  border: 0px;
+  outline: none;
+  width: 5%;
+  height: 1rem;
+  accent-color: var(--darker-green);
 }
 
 label {
@@ -56,11 +64,12 @@ main {
   gap: 1rem;
 }
 
-.personal-info {
+article {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
+
 .personal-info div {
   display: flex;
   flex-direction: column;
@@ -71,4 +80,32 @@ main {
 }
 .personal-info .fullname div {
   width: 100%;
+}
+
+.query-selection {
+  display: flex;
+  flex-direction: column;
+}
+.query-selection .query-radios {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.query-selection .query-radios div {
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid var(--medium-grey);
+  border-radius: 10px;
+  padding: 12px 10px;
+}
+.query-selection .query-radios div p {
+  font-size: 16px;
+}
+.query-selection .query-radios div.focused {
+  border: 1px solid var(--darker-green);
+  outline: 0px;
+  background-color: var(--lighter-green);
 }/*# sourceMappingURL=style.css.map */

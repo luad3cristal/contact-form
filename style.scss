@@ -26,7 +26,7 @@ body {
 }
 
 input {
-  padding: 8px 10px;
+  padding: 10px;
 
   font-family: "Karla", sans-serif;
   font-size: 16px;
@@ -37,8 +37,16 @@ input {
   &:hover,
   &:focus {
     border: 1px solid var(--darker-green);
-    outline: 1px solid var(--darker-green);
+    outline: 0px;
   }
+}
+
+input[type="radio"] {
+  border: 0px;
+  outline: none;
+  width: 5%;
+  height: 1rem;
+  accent-color: var(--darker-green);
 }
 
 label {
@@ -65,11 +73,13 @@ main {
   gap: 1rem;
 }
 
-.personal-info {
+article {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
 
+.personal-info {
   div {
     display: flex;
     flex-direction: column;
@@ -81,6 +91,39 @@ main {
 
     div {
       width: 100%;
+    }
+  }
+}
+
+.query-selection {
+  display: flex;
+  flex-direction: column;
+
+  .query-radios {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+
+    div {
+      cursor: pointer;
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      border: 1px solid var(--medium-grey);
+      border-radius: 10px;
+      padding: 12px 10px;
+
+      p {
+        font-size: 16px;
+      }
+      &.focused {
+        border: 1px solid var(--darker-green);
+        outline: 0px;
+        background-color: var(--lighter-green);
+      }
     }
   }
 }
