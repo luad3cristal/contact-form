@@ -59,7 +59,8 @@ label span {
 
 main {
   max-width: 720px;
-  width: 700px;
+  width: 75%;
+  min-width: 315px;
   background-color: var(--white);
   color: black;
   padding: 3% 2% 2%;

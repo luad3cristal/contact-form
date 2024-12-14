@@ -1,9 +1,14 @@
-//usar preventDefault pra evitar que a mensagem de erro apareça
-// form = document.querySelector("form");
-// input = document.querySelector("input");
+//tentar usar .map aqui
+const queryType = Array.from(document.querySelectorAll(".query-radio"));
+const inputRadio = Array.from(document.querySelectorAll(".inputRadio"));
 
-// form.addEventListener("submit", function (event) {
-//   if (input.value == "") {
-//     event.preventDefault(); // prevent the form from submitting
-//   }
-// });
+queryType.forEach((element) => {
+  element.addEventListener("click", () => {
+    queryType.forEach((div) => div.classList.remove("focused"));
+    element.classList.add("focused");
+
+    const index = queryType.findIndex((num) => num === element);
+    inputRadio.forEach((input) => input.removeAttribute("checked"));
+    inputRadio[index].setAttribute("checked", "");
+  });
+});
