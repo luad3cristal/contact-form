@@ -27,18 +27,31 @@
         <section class="fullname">
           <div>
             <label for="firstName">First Name <span>*</span></label>
-            <input type="text" name="nome" id="firstName" />
+            <input
+              type="text"
+              name="nome"
+              id="firstName"
+              class="displayError"
+            />
+            <span class="error-message">This field is required</span>
           </div>
 
           <div>
             <label for="lastName">Last Name <span>*</span></label>
-            <input type="text" name="sobrenome" id="lastName" />
+            <input
+              type="text"
+              name="sobrenome"
+              id="lastName"
+              class="displayError"
+            />
+            <span class="error-message">This field is required</span>
           </div>
         </section>
 
         <div class="email">
           <label for="email">Email Address <span>*</span></label>
-          <input type="email" name="email" id="email" />
+          <input type="email" name="email" id="email" class="displayError" />
+          <span class="error-message">Please enter a valid email address</span>
         </div>
       </article>
 
@@ -56,23 +69,31 @@
               <p>Support Request</p>
             </div>
           </div>
+
+          <span class="error-message-query">Please select a query type</span>
         </section>
 
         <section class="textarea-message">
           <label for="message">Message <span>*</span></label>
-          <textarea name="message" id="message"></textarea>
+          <textarea name="message" id="message" class="displayError"></textarea>
+          <span class="error-message">This field is required</span>
         </section>
 
         <section class="consentement">
-          <input type="checkbox" name="consentement" id="agreement" />
-          <label for="agreement">
-            I consent to being contacted by the team <span>*</span></label
+          <div>
+            <input type="checkbox" name="consentement" id="agreement" />
+            <label for="agreement">
+              I consent to being contacted by the team <span>*</span></label
+            >
+          </div>
+          <span class="error-message-agreement"
+            >To submit this form, please consent to being contacted</span
           >
         </section>
       </article>
 
       <article class="submit">
-        <button>Submit</button>
+        <button id="submit">Submit</button>
       </article>
     </main>
 
