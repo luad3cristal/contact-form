@@ -31,7 +31,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 💻 Projeto
 
-Este projeto é um formulário de contato que pode ser utilizado no rodapé dos sites.
+Este projeto é um formulário de contato que pode ser utilizado no rodapé de sites.
 
 - [Visite o projeto online](https://luad3cristal.github.io/contact-form/)
 
