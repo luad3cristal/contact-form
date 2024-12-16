@@ -2,28 +2,31 @@ const botao = document.querySelector("#submit");
 
 const queryType = Array.from(document.querySelectorAll(".query-radio"));
 const inputRadio = Array.from(document.querySelectorAll(".inputRadio"));
-
 const displayErrorMessage = Array.from(
   document.querySelectorAll(".displayError")
 );
-
 const errorMessage = Array.from(document.querySelectorAll(".error-message"));
 const errorMessageQuery = document.querySelector(".error-message-query");
-
 const checkbox = document.querySelector("#agreement");
 const errorMessageCheckbox = document.querySelector(".error-message-agreement");
+
+const sentMessage = document.querySelector("header");
+
+const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
 queryType.forEach((element, index) => {
   element.addEventListener("click", () => {
     queryType.forEach((div) => div.classList.remove("focused"));
     element.classList.add("focused");
 
-    inputRadio.forEach((input) => input.removeAttribute("checked"));
-    inputRadio[index].setAttribute("checked", "");
+    inputRadio.forEach((input) => (input.checked = false));
+    inputRadio[index].checked = true;
   });
 });
 
 const displayError = () => {
+  let valido = true;
+
   displayErrorMessage.forEach((element, index) => {
     element.classList.remove("error");
     errorMessage[index].style.opacity = 0;
@@ -34,6 +37,7 @@ const displayError = () => {
         element.classList.add("error");
         errorMessage[index].style.opacity = 1;
         errorMessage[index].style.pointerEvents = "auto";
+        valido = false;
       } else {
         element.classList.remove("error");
         errorMessage[index].style.opacity = 0;
@@ -44,6 +48,7 @@ const displayError = () => {
         element.classList.add("error");
         errorMessage[index].style.opacity = 1;
         errorMessage[index].style.pointerEvents = "auto";
+        valido = false;
       }
     }
 
@@ -53,6 +58,7 @@ const displayError = () => {
           element.classList.add("error");
           errorMessage[index].style.opacity = 1;
           errorMessage[index].style.pointerEvents = "auto";
+          valido = false;
         } else {
           element.classList.remove("error");
           errorMessage[index].style.opacity = 0;
@@ -82,6 +88,7 @@ const displayError = () => {
         element.classList.add("error");
         errorMessageQuery.style.opacity = 1;
         errorMessageQuery.style.pointerEvents = "auto";
+        valido = false;
       }
 
       element.addEventListener("click", () => {
@@ -95,21 +102,37 @@ const displayError = () => {
   if (!checkbox.checked) {
     errorMessageCheckbox.style.opacity = 1;
     errorMessageCheckbox.style.pointerEvents = "auto";
+    valido = false;
+  }
+  checkbox.addEventListener("click", () => {
+    if (!checkbox.checked) {
+      errorMessageCheckbox.style.opacity = 1;
+      errorMessageCheckbox.style.pointerEvents = "auto";
+      valido = false;
+    } else {
+      errorMessageCheckbox.style.opacity = 0;
+      errorMessageCheckbox.style.pointerEvents = "none";
+    }
+  });
+
+  return valido;
+};
+
+const sendForm = () => {
+  if (displayError() === true) {
+    sentMessage.classList.add("show");
+    setTimeout(() => {
+      inputRadio.forEach((input) => (input.checked = false));
+      queryType.forEach((div) => div.classList.remove("focused"));
+      displayErrorMessage.forEach((input) => (input.value = ""));
+      checkbox.checked = false;
+
+      sentMessage.classList.remove("show");
+    }, 2000);
+  } else {
+    sentMessage.classList.remove("show");
+    displayError();
   }
 };
 
-botao.addEventListener("click", displayError);
-checkbox.addEventListener("click", () => {
-  if (!checkbox.checked) {
-    errorMessageCheckbox.style.opacity = 1;
-    errorMessageCheckbox.style.pointerEvents = "auto";
-  } else {
-    errorMessageCheckbox.style.opacity = 0;
-    errorMessageCheckbox.style.pointerEvents = "none";
-  }
-});
-
-function validateEmail(email) {
-  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return re.test(email);
-}
+botao.addEventListener("click", sendForm);
