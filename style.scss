@@ -18,7 +18,7 @@
 
 body {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background-color: var(--lighter-green);
 
   display: flex;
@@ -91,13 +91,14 @@ label {
 
 main {
   max-width: 720px;
-  width: 75%;
+  width: 90%;
   min-width: 315px;
 
   background-color: var(--white);
   color: black;
 
   padding: 20px;
+  margin: 10px 0;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 20px;
 
@@ -124,6 +125,10 @@ article {
 
     div {
       width: 100%;
+    }
+
+    @media (max-width: 600px) {
+      flex-direction: column;
     }
   }
 }
@@ -173,6 +178,10 @@ article {
         border: 1px solid var(--red);
         outline: none;
       }
+    }
+
+    @media (max-width: 600px) {
+      flex-direction: column;
     }
   }
 }

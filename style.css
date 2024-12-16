@@ -17,7 +17,7 @@
 
 body {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background-color: var(--lighter-green);
   display: flex;
   align-items: center;
@@ -83,11 +83,12 @@ label span {
 
 main {
   max-width: 720px;
-  width: 75%;
+  width: 90%;
   min-width: 315px;
   background-color: var(--white);
   color: black;
   padding: 20px;
+  margin: 10px 0;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 20px;
   display: flex;
@@ -111,6 +112,11 @@ article {
 }
 .personal-info .fullname div {
   width: 100%;
+}
+@media (max-width: 600px) {
+  .personal-info .fullname {
+    flex-direction: column;
+  }
 }
 
 .query-selection {
@@ -150,6 +156,11 @@ article {
 .query-selection .query-radios .error:hover, .query-selection .query-radios .error:focus {
   border: 1px solid var(--red);
   outline: none;
+}
+@media (max-width: 600px) {
+  .query-selection .query-radios {
+    flex-direction: column;
+  }
 }
 
 .textarea-message {
